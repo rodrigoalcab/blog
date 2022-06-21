@@ -24,3 +24,6 @@ Route::get('contato', function () {
 Route::get('termos', function () {
     return view('termos');
 });
+
+//Route::get('hello-world', '\\App\Http\Controllers\HelloWorldController@index');
+Route::get('hello-world', [\App\Http\Controllers\HelloWorldController::class, 'index']);

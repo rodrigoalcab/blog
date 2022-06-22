@@ -13,17 +13,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
 
-Route::get('contato', function () {
-    return view('contato');
-});
-
-Route::get('termos', function () {
-    return view('termos');
-});
 
 //Route::get('hello-world', '\\App\Http\Controllers\HelloWorldController@index');
-Route::get('hello-world', [\App\Http\Controllers\HelloWorldController::class, 'index']);
+/* Route::get('hello-world', [\App\Http\Controllers\HelloWorldController::class, 'index']);
+
+
+Route::get('/post/{slug?}', function($slug = null) {
+    return $slug;
+})
+->name('post.single');
+
+
+Route::get('/user/{id}', function($slug = null) {
+    return $slug;
+})
+->where(['id' => '[0-9]+']); */
+
+Route::prefix('posts')->name('posts.')->group(function(){
+
+    Route::get('/', [\App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
+
+    Route::get('/create', [\App\Http\Controllers\PostController::class, 'create'])->name('posts.create');
+
+    Route::post('/save', [\App\Http\Controllers\PostController::class, 'save'])->name('posts.save');
+
+});

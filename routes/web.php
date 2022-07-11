@@ -31,7 +31,7 @@ Route::get('/post/{slug?}', function($slug = null) {
 Route::get('/user/{id}', function($slug = null) {
     return $slug;
 })
-->where(['id' => '[0-9]+']); */
+->where(['id' => '[0-9]+']); 
 
 Route::prefix('posts')->name('posts.')->group(function(){
 
@@ -42,3 +42,5 @@ Route::prefix('posts')->name('posts.')->group(function(){
     Route::post('/save', [\App\Http\Controllers\PostController::class, 'save'])->name('posts.save');
 
 });
+*/
+Route::resource('/users', \App\Http\Controllers\UserController::class);

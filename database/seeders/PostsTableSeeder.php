@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class PostsTableSeeder extends Seeder
 {
@@ -21,7 +22,8 @@ class PostsTableSeeder extends Seeder
             'content' => 'Conteúdo da postagem',
             'is_active' => 1,
             'slug' => 'primeira-postagem',
-            'user_id' => 185
+            'user_id' => User::inRandomOrder()->first()->id
+            
 
         ]);
     }
